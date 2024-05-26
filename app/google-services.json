@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "13752491456",
+    "project_id": "e-slambook-ea037",
+    "storage_bucket": "e-slambook-ea037.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13752491456:android:0957f2ea341367af877c25",
+        "android_client_info": {
+          "package_name": "com.suhani.e_slambook"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCePbq6lQU2rCMgIifuxjwGVkBBrTGzj6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
