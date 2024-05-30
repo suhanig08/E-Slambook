@@ -7,23 +7,17 @@ import com.google.firebase.auth.FirebaseUser
 import com.suhani.e_slambook.repository.AuthenticationRepository
 
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
-    private lateinit var repository: AuthenticationRepository
-    private lateinit var userData:MutableLiveData<FirebaseUser>
-    private lateinit var loggedStatus:MutableLiveData<Boolean>
+    private var repository: AuthenticationRepository=AuthenticationRepository(application)
+     var userData:MutableLiveData<FirebaseUser> = repository.liveData
+     var loggedStatus:MutableLiveData<Boolean> = repository.loggedOutliveData
 
-    fun getUserData(): MutableLiveData<FirebaseUser> {
-        return userData
-    }
-
-    fun getUserLoggedStatus(): MutableLiveData<Boolean> {
-        return loggedStatus
-    }
-
-    init {
-        repository=AuthenticationRepository(application)
-        userData=repository.getFireBaseUserMutableLiveData()
-        loggedStatus=repository.getUserLoggedOutMutableLiveData()
-    }
+//    fun getUserData(): MutableLiveData<FirebaseUser> {
+//        return userData
+//    }
+//
+//    fun getUserLoggedStatus(): MutableLiveData<Boolean> {
+//        return loggedStatus
+//    }
 
     fun register(email:String,pass:String){
         repository.register(email,pass)

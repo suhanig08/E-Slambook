@@ -30,12 +30,11 @@ class SignUpFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel=ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
-            .getInstance(requireActivity().application)).get(AuthViewModel::class.java)
-        viewModel.getUserData().observe(this, Observer<FirebaseUser>(){
+        viewModel= ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
+            .getInstance(requireActivity().application))[AuthViewModel::class.java]
+        viewModel.userData.observe(this, Observer<FirebaseUser>(){
             if(it!=null){
                 navController.navigate(R.id.action_signUpFragment_to_signInFragment)
-
             }
         })
     }
@@ -68,15 +67,24 @@ class SignUpFragment : Fragment() {
             if (email.isNotEmpty() && pass.isNotEmpty()&&cnfPass.isNotEmpty()) {
                 if(pass==cnfPass) {
                     viewModel.register(email, pass)
+                    //navController.navigate(R.id.action_signUpFragment_to_signOutFragment2)
                 }else{
                     Toast.makeText(context, "Password does not match", Toast.LENGTH_SHORT).show()
                 }
             }else{
                 Toast.makeText(context, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
             }
-
         }
-
+//        observeViewModel()
     }
+
+//    private fun observeViewModel() {
+//        Log.e("userdata","inside observeViewModel")
+//        viewModel.userData.observe(viewLifecycleOwner){
+//            Log.e("userdata","this=${it}")
+//                 if(it!=null)
+//                navController.navigate(R.id.action_signUpFragment_to_signInFragment)
+//        }
+//    }
 
 }

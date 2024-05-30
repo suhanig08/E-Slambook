@@ -31,11 +31,9 @@ class SignInFragment : Fragment() {
         super.onCreate(savedInstanceState)
         viewModel= ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
             .getInstance(requireActivity().application)).get(AuthViewModel::class.java)
-        viewModel.getUserData().observe(this, Observer<FirebaseUser>(){
-            if(it!=null){
-                navController.navigate(R.id.action_signInFragment_to_signOutFragment2)
-
-            }
+        viewModel.userData.observe(this, Observer<FirebaseUser>(){
+            if(it!=null)
+            navController.navigate(R.id.action_signInFragment_to_signOutFragment2)
         })
     }
 
@@ -64,6 +62,7 @@ class SignInFragment : Fragment() {
             val pass=passEt.text.toString()
             if (email.isNotEmpty() && pass.isNotEmpty()) {
                     viewModel.login(email, pass)
+                //navController.navigate(R.id.action_signInFragment_to_signOutFragment2)
             }else{
                 Toast.makeText(context, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
             }
@@ -71,4 +70,12 @@ class SignInFragment : Fragment() {
         }
 
     }
+
+//    private fun observeViewModel() {
+//        viewModel.userData.observe(viewLifecycleOwner, Observer { firebaseUser ->
+//            firebaseUser?.let {
+//                navController.navigate(R.id.action_signInFragment_to_signOutFragment2)
+//            }
+//        })
+//    }
 }

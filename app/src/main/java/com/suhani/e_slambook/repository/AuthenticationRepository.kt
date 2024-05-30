@@ -2,6 +2,7 @@ package com.suhani.e_slambook.repository
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -9,23 +10,12 @@ import com.google.firebase.auth.FirebaseUser
 
 @SuppressLint("SuspiciousIndentation")
 class AuthenticationRepository(private var application: Application) {
-    private lateinit var liveData: MutableLiveData<FirebaseUser>
-    private lateinit var loggedOutliveData: MutableLiveData<Boolean>
-    private  var auth:FirebaseAuth
-
-    fun getFireBaseUserMutableLiveData(): MutableLiveData<FirebaseUser> {
-        return liveData
-    }
-
-    fun getUserLoggedOutMutableLiveData(): MutableLiveData<Boolean> {
-        return loggedOutliveData
-    }
+    var liveData: MutableLiveData<FirebaseUser> = MutableLiveData()
+    var loggedOutliveData: MutableLiveData<Boolean> = MutableLiveData()
+    private  var auth:FirebaseAuth = FirebaseAuth.getInstance()
 
     init {
-        //liveData=MutableLiveData<FirebaseUser>()
-        auth=FirebaseAuth.getInstance()
-
-            if(auth.currentUser!=null){
+        if(auth.currentUser!=null){
                 liveData.postValue(auth.currentUser)
             }
     }
@@ -33,6 +23,7 @@ class AuthenticationRepository(private var application: Application) {
     fun register(email:String, pass:String){
         auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener {
             if(it.isSuccessful){
+                Log.e("userdata","registration successful")
                 liveData.postValue(auth.currentUser)
             }else{
                 Toast.makeText(application, it.exception.toString(), Toast.LENGTH_SHORT).show()
