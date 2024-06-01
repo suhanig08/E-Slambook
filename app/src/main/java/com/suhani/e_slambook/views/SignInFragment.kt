@@ -33,7 +33,7 @@ class SignInFragment : Fragment() {
             .getInstance(requireActivity().application)).get(AuthViewModel::class.java)
         viewModel.userData.observe(this, Observer<FirebaseUser>(){
             if(it!=null)
-            navController.navigate(R.id.action_signInFragment_to_signOutFragment2)
+            navController.navigate(R.id.action_signInFragment_to_mainActivity2)
         })
     }
 

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -16,7 +15,7 @@ import com.suhani.e_slambook.R
 class SignOutFragment : Fragment() {
 
     //private lateinit var btnLogOut: Button
-    //private lateinit var viewModel: AuthViewModel
+//    private lateinit var viewModel: AuthViewModel
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var drawerBtn:ImageView
@@ -53,25 +52,28 @@ class SignOutFragment : Fragment() {
             drawerLayout.open()
         }
 
-        navigationView.setNavigationItemSelectedListener {
-            val itemId=it.itemId
-            if(itemId==R.id.home){
-                Toast.makeText(context, "home", Toast.LENGTH_SHORT).show()
-            }
-            if(itemId==R.id.profile){
-                Toast.makeText(context, "profile", Toast.LENGTH_SHORT).show()
-            }
-            if(itemId==R.id.friends){
-                Toast.makeText(context, "friends", Toast.LENGTH_SHORT).show()
-                true
-            }
-            else
-            false
-        }
+//        navigationView.setNavigationItemSelectedListener {
+//            val itemId=it.itemId
+//            if(itemId==R.id.home){
+//                Toast.makeText(context, "home", Toast.LENGTH_SHORT).show()
+//                navController.navigate(R.id.action_signOutFragment2_to_homeFragment)
+//            }
+//            if(itemId==R.id.profile){
+//                Toast.makeText(context, "profile", Toast.LENGTH_SHORT).show()
+//                navController.navigate(R.id.action_signOutFragment2_to_profileFragment)
+//            }
+//            if(itemId==R.id.friends){
+//                Toast.makeText(context, "friends", Toast.LENGTH_SHORT).show()
+//                navController.navigate(R.id.action_signOutFragment2_to_friendsFragment)
+//            }
+//            drawerLayout.close()
+//            false
+//        }
 
 //        btnLogOut.setOnClickListener{
 //            viewModel.logout()
 //            //navController.navigate(R.id.action_signOutFragment2_to_signInFragment)
 //        }
     }
+
 }

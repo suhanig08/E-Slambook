@@ -90,6 +90,20 @@ dependencies {
 
     implementation("androidx.fragment:fragment-ktx:1.7.1")
 
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    //Firebase Libraries
+    implementation ("com.google.firebase:firebase-auth:23.0.0")
+    implementation ("com.google.firebase:firebase-database:21.0.0")
+    implementation ("com.google.firebase:firebase-storage:21.0.0")
+
+    //Progress Dialog Library
+    implementation ("com.jpardogo.googleprogressbar:library:1.2.0")
+
+    implementation("com.github.dhaval2404:imagepicker:2.1")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
 
 
 //    //Kodein Dependency Injection
