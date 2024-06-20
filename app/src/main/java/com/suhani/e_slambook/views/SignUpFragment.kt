@@ -14,8 +14,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.suhani.e_slambook.R
 import com.suhani.e_slambook.R.layout
+import com.suhani.e_slambook.data.User
 import com.suhani.e_slambook.viewmodel.AuthViewModel
 
 class SignUpFragment : Fragment() {
@@ -27,6 +30,8 @@ class SignUpFragment : Fragment() {
     private lateinit var signInText:TextView
     private lateinit var viewModel:AuthViewModel
     private lateinit var navController:NavController
+    private lateinit var dbRef:DatabaseReference
+    private var userData= arrayListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +60,7 @@ class SignUpFragment : Fragment() {
         btnSignUp=view.findViewById(R.id.btnSignUp)
         signInText=view.findViewById(R.id.txtLogin)
         navController=Navigation.findNavController(view)
+        dbRef=FirebaseDatabase.getInstance().getReference("Users")
 
         signInText.setOnClickListener{
             navController.navigate(R.id.action_signUpFragment_to_signInFragment)
@@ -67,6 +73,14 @@ class SignUpFragment : Fragment() {
             if (email.isNotEmpty() && pass.isNotEmpty()&&cnfPass.isNotEmpty()) {
                 if(pass==cnfPass) {
                     viewModel.register(email, pass)
+//                    val obj=User(
+//                        FirebaseAuth.getInstance().currentUser!!.uid, "", "", "",
+//                        Uri.parse("android.resources://com.suhani.e_slambook/${R.drawable.noprofile}")
+//                            .toString(),
+//                        "nothing_happen",
+//                    )
+//                    userData.add(obj)
+//                    dbRef.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(userData)
                     //navController.navigate(R.id.action_signUpFragment_to_signOutFragment2)
                 }else{
                     Toast.makeText(context, "Password does not match", Toast.LENGTH_SHORT).show()

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/rvProfileImage"
+        app:civ_border_width="2dp"
+        android:src="@drawable/profile"
+        android:layout_margin="10dp"
+        app:civ_border_color="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="130dp">
+
+        <TextView
+            android:id="@+id/rvUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/rvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/rvBio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bio"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/removeBtn"-->
+<!--        android:layout_width="45dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:visibility="gone"-->
+<!--        android:tag="@string/remove_friend"-->
+<!--        android:src="@drawable/removefriend_icon"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_margin="10dp"/>-->
+
+    <ImageView
+        android:id="@+id/alreadyFriends"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:visibility="gone"
+        android:tag="Friends"
+        android:src="@drawable/alreadyfriends_icon"
+        android:layout_gravity="end"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/acceptBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="7dp"
+        android:text="@string/accept"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/declineBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="7dp"
+        android:text="@string/decline"
+        android:visibility="gone"/>
+
+</androidx.cardview.widget.CardView>

@@ -28,9 +28,9 @@
     </fragment>
     <fragment
         android:id="@+id/friendsFragment"
-        android:name="com.suhani.e_slambook.FriendsFragment"
+        android:name="com.suhani.e_slambook.AddFriendFragment"
         android:label="fragment_friends"
-        tools:layout="@layout/fragment_friends" />
+        tools:layout="@layout/fragment_addfriend" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.suhani.e_slambook.HomeFragment"

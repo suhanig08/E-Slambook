@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/fragment_book.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.book.BookFragment">
+
+    <ViewFlipper
+        android:id="@+id/book_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inAnimation="@anim/page_flip_in"
+        android:outAnimation="@anim/page_flip_out">
+
+        <!-- Add a Page for Each Friend -->
+        <!-- Example Page -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Slam Book Questions -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Friend's Name" />
+
+            <!-- Other questions and answers go here -->
+
+            <!-- Send Request Button -->
+            <Button
+                android:id="@+id/send_request_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Request" />
+        </LinearLayout>
+    </ViewFlipper>
+
+    <Button
+        android:id="@+id/add_page_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Add Page" />
+</RelativeLayout>

@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
    <item
-       android:id="@+id/home"
+       android:id="@+id/homeFragment2"
        android:title="Home"
        android:icon="@drawable/icon_home">
    </item>
 
     <item
-        android:id="@+id/friends"
+        android:id="@+id/addFriendFragment"
+        android:title="Add Friend"
+        android:icon="@drawable/addfriend_icon">
+    </item>
+
+    <item
+        android:id="@+id/friendsFragment2"
         android:title="Friends"
         android:icon="@drawable/icon_friends">
     </item>
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profileFragment"
         android:title="Profile"
         android:icon="@drawable/round_person_24">
     </item>

@@ -54,4 +54,15 @@
     <string name="register">Register</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search</string>
+    <string name="name">Name</string>
+    <string name="user_name">User Name</string>
+    <string name="bio">Bio</string>
+    <string name="save">Save</string>
+    <string name="send_friend_request">Send friend request</string>
+    <string name="cancel_friend_request">Cancel friend request</string>
+    <string name="cancel">Cancel</string>
+    <string name="decline">Decline</string>
+    <string name="remove_friend">Remove friend</string>
+    <string name="accept">Accept</string>
 </resources>

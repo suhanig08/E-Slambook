@@ -40,40 +40,53 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        profilePhoto=view.findViewById(R.id.profile_image)
-        fab=binding.floatingActionButton
+        profilePhoto = view.findViewById(R.id.profile_image)
+        fab = binding.floatingActionButton
 
 
-        auth=FirebaseAuth.getInstance()
-        val uid=auth.currentUser?.uid
-        databaseReference=FirebaseDatabase.getInstance().getReference("Users")
-        storageReference=FirebaseStorage.getInstance()
+
+        auth = FirebaseAuth.getInstance()
+        val uid = auth.currentUser?.uid
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users")
+        storageReference = FirebaseStorage.getInstance()
 
         fetchImage()
 
         fab.setOnClickListener {
             ImagePicker.with(this)
-                .crop()	    			//Crop image(Optional), Check Customization for more option
-                .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                .crop()                    //Crop image(Optional), Check Customization for more option
+                .compress(1024)            //Final image size will be less than 1 MB(Optional)
+                .maxResultSize(
+                    1080,
+                    1080
+                )    //Final image resolution will be less than 1080 x 1080(Optional)
                 .start()
         }
 
-        binding.saveBtn.setOnClickListener{
+        binding.saveBtn.setOnClickListener {
             showProgressBar()
-            val firstName=binding.etFirstName.text.toString()
-            val lastName=binding.etLastName.text.toString()
-            val bio=binding.etBio.text.toString()
+            val userName = binding.etUserName.text.toString()
+            val Name = binding.etName.text.toString()
+            val bio = binding.etBio.text.toString()
 
-            val user= User(firstName,lastName,bio)
+            val userId = auth.currentUser!!.uid
+            val dbRef = FirebaseDatabase.getInstance().getReference("UserImages").child(userId)
+            dbRef.get().addOnSuccessListener {
+                val url = it.child("url").value.toString()
+                val user = User(userId,userName, Name, bio,url,"nothing_happen")
 
-            if(uid!=null){
-                databaseReference.child(uid).setValue(user).addOnCompleteListener{
-                    if(it.isSuccessful){
-                        uploadProfilePic()
-                    }else{
-                        hideProgressBar()
-                        Toast.makeText(context, "Failed to update the profile", Toast.LENGTH_SHORT).show()
+                if (uid != null) {
+                    databaseReference.child(uid).setValue(user).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            uploadProfilePic()
+                        } else {
+                            hideProgressBar()
+                            Toast.makeText(
+                                context,
+                                "Failed to update the profile",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }
@@ -81,6 +94,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun uploadProfilePic() {
+//            imageUri=Uri.parse("android.resources://com.suhani.e_slambook/${R.drawable.noprofile}")
         storageReference.getReference("Users/"+auth.currentUser?.uid)
             .child(System.currentTimeMillis().toString())
         .putFile(imageUri).addOnSuccessListener {
