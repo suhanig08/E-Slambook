@@ -3,6 +3,7 @@ package com.suhani.e_slambook
 // BookFragment.kt
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,9 +43,19 @@ class BookFragment : Fragment() {
     }
 
     private fun addNewPage() {
+        Log.e("addpagee","inside addpage()")
         val inflater = LayoutInflater.from(context)
         val newPage = inflater.inflate(R.layout.slam_book_page, bookFlipper, false)
         bookFlipper.addView(newPage)
+
+        for (i in 0 until bookFlipper.childCount) {
+            val page = bookFlipper.getChildAt(i)
+            val sendRequestButton: Button = page.findViewById(R.id.send_request_button)
+            sendRequestButton.setOnClickListener {
+                // Show list of friends and send request logic
+                showFriendsList()
+            }
+        }
 
         // Handle sending requests for the new page
         val sendRequestButton: Button = newPage.findViewById(R.id.send_request_button)
